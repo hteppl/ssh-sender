@@ -17,6 +17,8 @@ def process_server_with_delay(server, commands: list, index: int) -> None:
 
 # Execute async commands
 for server in storage.servers:
-    with ThreadPoolExecutor(max_workers=4) as executor:  # or use max_workers=len(storage.servers)
+    with ThreadPoolExecutor(
+        max_workers=4
+    ) as executor:  # or use max_workers=len(storage.servers)
         for index, server in enumerate(storage.servers):
             executor.submit(process_server_with_delay, server, commands0, index)

@@ -53,7 +53,9 @@ class Server:
 
     def _is_connected_sftp(self) -> bool:
         # Check if the SFTP connection is active
-        return self.sftp_client is not None and not self.sftp_client.get_channel().closed
+        return (
+            self.sftp_client is not None and not self.sftp_client.get_channel().closed
+        )
 
     def execute_ssh_commands(self, commands: List[str]) -> None:
         # Execute multiple SSH commands
@@ -99,7 +101,9 @@ class Server:
         self._connect_sftp()
         try:
             self.sftp_client.get(remote_path, local_path)
-            print(f" — {local_path} <<< {remote_path} SFTP {self.hostname} ({self.name})")
+            print(
+                f" — {local_path} <<< {remote_path} SFTP {self.hostname} ({self.name})"
+            )
 
         except Exception as e:
             print(f" — ERROR SFTP <<< {self.hostname} ({self.name}) - {str(e)}")

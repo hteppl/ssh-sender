@@ -3,8 +3,6 @@ from storage import JsonServerStorage, Secrets
 secrets = Secrets()
 storage = JsonServerStorage(secrets)
 
-commands0 = ["whoami", "hostname"]
-
 for server in storage.servers:
     # Upload a text file with some text replaces
     with open("../samples/sample_text.txt", "r") as file:
